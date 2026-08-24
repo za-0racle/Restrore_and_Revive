@@ -1,6 +1,38 @@
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
 import { db } from './firebase.js';
 
+const FIRESTORE_TIMEOUT_MS = 20000;
+
+function submitWithTimeout(writePromise) {
+    let timeoutId;
+    const timeoutPromise = new Promise((_, reject) => {
+        timeoutId = setTimeout(() => {
+            const error = new Error('Firebase did not respond within 20 seconds.');
+            error.code = 'submission-timeout';
+            reject(error);
+        }, FIRESTORE_TIMEOUT_MS);
+    });
+
+    return Promise.race([writePromise, timeoutPromise])
+        .finally(() => clearTimeout(timeoutId));
+}
+
+function getSubmissionError(error, type) {
+    if (!navigator.onLine) {
+        return `You appear to be offline. Your ${type} was not submitted.`;
+    }
+
+    if (error?.code === 'permission-denied') {
+        return `Firebase blocked this ${type}. The Firestore security rules need to be published.`;
+    }
+
+    if (error?.code === 'submission-timeout' || error?.code === 'unavailable') {
+        return `Firebase could not be reached. Please check that Firestore is enabled, then try again.`;
+    }
+
+    return `Your ${type} could not be submitted. Please try again.`;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     /* =========================================================================
@@ -85,13 +117,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitButton.disabled = true;
 
                 try {
-                    await addDoc(collection(db, 'contacts'), {
+                    await submitWithTimeout(addDoc(collection(db, 'contacts'), {
                         fullName: document.getElementById('fullName').value.trim(),
                         phone: document.getElementById('phone').value.trim(),
                         email: document.getElementById('email').value.trim(),
                         status: 'new',
                         createdAt: serverTimestamp(),
-                    });
+                    }));
 
                     successMsg.textContent = 'Thank you! Your message has been sent.';
                     successMsg.classList.remove('hidden');
@@ -100,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     setTimeout(() => successMsg.classList.add('hidden'), 4000);
                 } catch (error) {
                     console.error('Contact submission failed:', error);
-                    alert('Your message could not be sent. Please check your connection and try again.');
+                    alert(getSubmissionError(error, 'message'));
                 } finally {
                     submitButton.textContent = originalText;
                     submitButton.disabled = false;
@@ -170,11 +202,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 try {
-                    await addDoc(collection(db, 'bookings'), {
+                    await submitWithTimeout(addDoc(collection(db, 'bookings'), {
                         ...bookingData,
                         status: 'new',
                         createdAt: serverTimestamp(),
-                    });
+                    }));
 
                     successModal.classList.remove('hidden');
                     bookingForm.reset();
@@ -184,7 +216,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 } catch (error) {
                     console.error('Booking submission failed:', error);
-                    alert('Your booking could not be submitted. Please check your connection and try again.');
+                    alert(getSubmissionError(error, 'booking'));
                 } finally {
                     // 4. Reset button back to normal state
                     submitBtn.textContent = originalBtnText;
