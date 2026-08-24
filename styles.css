@@ -1,0 +1,668 @@
+/* =========================================================================
+   CSS Variables (Updated to include imported Google Fonts)
+   ========================================================================= */
+   :root {
+    --clr-bg-cream: #FDFBF7;
+    --clr-bg-beige: #F4EBE1;
+    --clr-soft-green: #9BB098;
+    --clr-soft-green-hover: #839780;
+    --clr-light-brown: #C89F7A;
+    --clr-text-dark: #3E3832;
+    --clr-text-light: #7A746E;
+    --clr-white: #FFFFFF;
+    
+    /* Elegant & Premium Fonts */
+    --font-heading: 'Playfair Display', serif;
+    --font-main: 'Montserrat', sans-serif;
+    
+    --transition-smooth: all 0.3s ease-in-out;
+    --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* =========================================================================
+   Global Reset & Typography
+   ========================================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--clr-bg-cream);
+    color: var(--clr-text-dark);
+    line-height: 1.6;
+    font-size: 16px;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--clr-text-dark);
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* =========================================================================
+   Navigation Bar & Logo
+   ========================================================================= */
+.navbar {
+    position: sticky;
+    top: 0;
+    background-color: var(--clr-bg-cream);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    z-index: 1000;
+    padding: 15px 0;
+}
+
+.nav-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo span {
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--clr-soft-green);
+    letter-spacing: 1px;
+}
+
+.logo-img {
+    height: 45px;
+    width: auto;
+    object-fit: contain;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a:not(.nav-btn) {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--clr-text-dark);
+    transition: var(--transition-smooth);
+}
+
+.nav-links a:not(.nav-btn):hover {
+    color: var(--clr-light-brown);
+}
+
+/* Hamburger Menu (Mobile) */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background-color: var(--clr-text-dark);
+    transition: var(--transition-smooth);
+    border-radius: 3px;
+}
+
+/* =========================================================================
+   Buttons
+   ========================================================================= */
+.btn-primary {
+    background-color: var(--clr-soft-green);
+    color: var(--clr-white);
+    padding: 12px 28px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+    display: inline-block;
+    text-align: center;
+}
+
+.btn-primary:hover {
+    background-color: var(--clr-soft-green-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(155, 176, 152, 0.4);
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* =========================================================================
+   Hero Section & Image Carousel
+   ========================================================================= */
+.hero {
+    height: 80vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-carousel {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    z-index: 1;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(244, 235, 225, 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 15px;
+    color: var(--clr-text-dark);
+    letter-spacing: 1px;
+}
+
+.hero-content p {
+    font-size: 1.3rem;
+    margin-bottom: 35px;
+    color: var(--clr-text-dark);
+    font-weight: 400;
+}
+
+/* =========================================================================
+   NEW: Services Section (Massage Types)
+   ========================================================================= */
+.services-section {
+    padding: 90px 0 40px;
+    background-color: var(--clr-bg-cream);
+}
+
+.services-section h2 {
+    font-size: 2.5rem;
+    color: var(--clr-soft-green);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.service-card {
+    background: var(--clr-white);
+    padding: 40px 25px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+    text-align: center;
+    transition: var(--transition-smooth);
+    border-bottom: 4px solid transparent;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+    border-bottom: 4px solid var(--clr-soft-green);
+}
+
+.service-icon {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.service-card h3 {
+    font-size: 1.4rem;
+    color: var(--clr-light-brown);
+}
+
+.service-card p {
+    font-size: 0.95rem;
+    color: var(--clr-text-light);
+}
+
+/* =========================================================================
+   Forms & Inputs Layout
+   ========================================================================= */
+.contact-section, .booking-section {
+    padding: 80px 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+}
+
+.contact-form-card, .quick-contact-card, .booking-form {
+    background: var(--clr-white);
+    padding: 45px;
+    border-radius: 15px;
+    box-shadow: var(--shadow-soft);
+}
+
+.form-group {
+    margin-bottom: 22px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--clr-text-dark);
+}
+
+input[type="text"], input[type="email"], input[type="tel"], 
+input[type="date"], input[type="time"], select, textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #E0DCD6;
+    border-radius: 8px;
+    background-color: var(--clr-bg-cream);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    color: var(--clr-text-dark);
+    transition: var(--transition-smooth);
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: var(--clr-soft-green);
+    box-shadow: 0 0 0 3px rgba(155, 176, 152, 0.2);
+}
+
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.radio-group div, .checkbox-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.radio-group.vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    accent-color: var(--clr-soft-green);
+    transform: scale(1.2);
+    margin-right: 8px;
+}
+
+/* =========================================================================
+   Booking Specifics
+   ========================================================================= */
+.page-header {
+    padding: 80px 20px 30px;
+}
+
+.page-header h1 {
+    font-size: 3rem;
+}
+
+.tagline {
+    font-style: italic;
+    color: var(--clr-soft-green);
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.form-section {
+    border: none;
+    border-top: 1px solid #E0DCD6;
+    padding-top: 35px;
+    margin-top: 35px;
+}
+
+.form-section legend {
+    font-size: 1.3rem;
+    color: var(--clr-light-brown);
+    font-weight: bold;
+    padding-right: 15px;
+    font-family: var(--font-heading);
+}
+
+.pricing-card {
+    background-color: var(--clr-bg-beige);
+    padding: 35px;
+    border-radius: 12px;
+    margin: 40px 0;
+    text-align: center;
+}
+
+.pricing-flex {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 25px;
+}
+
+.price-item h4 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.price {
+    font-size: 2.5rem;
+    color: var(--clr-soft-green);
+    font-weight: 700;
+    font-family: var(--font-heading);
+}
+
+/* =========================================================================
+   Utility, Modals & Animations
+   ========================================================================= */
+.hidden { display: none !important; }
+
+.success-message {
+    color: var(--clr-soft-green);
+    background: #eef3ed;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.contact-item .icon {
+    font-size: 2rem;
+    margin-right: 20px;
+    background: var(--clr-bg-beige);
+    padding: 15px;
+    border-radius: 50%;
+}
+
+.contact-link {
+    color: var(--clr-soft-green);
+    font-weight: 600;
+}
+
+.contact-link:hover { text-decoration: underline; }
+
+.modal {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background: var(--clr-white);
+    padding: 50px 30px;
+    border-radius: 15px;
+    text-align: center;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+    animation: slideUp 0.4s ease-out;
+}
+
+@keyframes slideUp {
+    from { transform: translateY(40px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+footer {
+    text-align: center;
+    padding: 35px;
+    background-color: var(--clr-bg-beige);
+    color: var(--clr-text-light);
+    font-size: 0.95rem;
+}
+
+/* =========================================================================
+   NEW: Floating WhatsApp Button
+   ========================================================================= */
+.floating-whatsapp {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25D366;
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    z-index: 9999;
+    transition: var(--transition-smooth);
+    animation: pulse-wa 2.5s infinite;
+}
+
+.floating-whatsapp svg {
+    width: 35px;
+    height: 35px;
+}
+
+.floating-whatsapp:hover {
+    transform: scale(1.1);
+    background-color: #1ebe5d;
+}
+
+@keyframes pulse-wa {
+    0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6); }
+    70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+/* =========================================================================
+   Mobile Responsiveness (Highly Optimized for all screens)
+   ========================================================================= */
+
+/* Tablets & Small Desktops */
+@media (max-width: 992px) {
+    .hero-content h1 { font-size: 3.2rem; }
+    .contact-grid { gap: 30px; }
+    .contact-form-card, .quick-contact-card, .booking-form { padding: 35px; }
+}
+
+/* Large Mobile / Standard Tablets */
+@media (max-width: 768px) {
+    .contact-grid, .grid-2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .logo span { display: none; } /* Clear up navbar space */
+    
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--clr-bg-cream);
+        padding: 20px 0;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.05);
+    }
+    .nav-links.active { display: flex; }
+    
+    .hamburger { display: flex; }
+    
+    .hero-content h1 { font-size: 2.8rem; }
+    .pricing-flex { flex-direction: column; gap: 20px; }
+    .page-header h1 { font-size: 2.4rem; }
+}
+
+/* Small Mobile Phones */
+@media (max-width: 480px) {
+    body { font-size: 15px; }
+    
+    .nav-container { padding: 0 15px; }
+    .logo-img { height: 35px; }
+    
+    .hero-content h1 { font-size: 2.2rem; margin-bottom: 10px; }
+    .hero-content p { font-size: 1.05rem; margin-bottom: 20px;}
+    .btn-primary { padding: 12px 20px; font-size: 0.95rem; }
+    
+    .services-section h2 { font-size: 2rem; }
+    .services-section { padding: 60px 0 20px; }
+    
+    .contact-form-card, .quick-contact-card, .booking-form { 
+        padding: 25px 15px; 
+    }
+    
+    .page-header { padding: 50px 15px 20px; }
+    .page-header h1 { font-size: 2rem; }
+    
+    .form-section legend { font-size: 1.15rem; }
+    input[type="text"], input[type="email"], input[type="tel"], 
+    input[type="date"], input[type="time"], select, textarea {
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+    
+    .floating-whatsapp {
+        width: 55px; height: 55px;
+        bottom: 20px; right: 20px;
+    }
+    .floating-whatsapp svg {
+        width: 28px; height: 28px;
+    }
+}
+
+/* =========================================================================
+   NEW: Policy Notification & Payment Styling
+   ========================================================================= */
+
+/* 20% Deposit Policy Box */
+.policy-notification {
+    background-color: #eef5ee; /* Soft subtle green */
+    border-left: 5px solid var(--clr-soft-green);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.policy-icon {
+    font-size: 1.5rem;
+}
+
+.policy-notification p {
+    font-size: 0.95rem;
+    color: var(--clr-text-dark);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.policy-notification a {
+    color: #25D366; /* WhatsApp Green */
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid #25D366;
+}
+
+.policy-notification a:hover {
+    color: #1ebe5d;
+    border-bottom-color: #1ebe5d;
+}
+
+/* Payment Options & Logos */
+.payment-options {
+    background-color: var(--clr-bg-cream);
+    padding: 25px;
+    border-radius: 10px;
+    border: 1px solid #E0DCD6;
+}
+
+.payment-label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.05rem;
+    color: var(--clr-text-dark);
+    width: 100%;
+}
+
+.payment-logo {
+    height: 24px;
+    width: auto;
+    object-fit: contain;
+    margin: 0 15px 0 10px;
+}
+
+.payment-logo.paypal {
+    height: 20px; /* PayPal logo requires slight size adjustment to match others */
+}

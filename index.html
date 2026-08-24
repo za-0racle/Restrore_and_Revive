@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restore & Revive Massage | Home</title>
+    <!-- Imported Classic & Premium Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Sticky Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Restore & Revive Logo" class="logo-img">
+                <span>Restore & Revive</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="booking.html" class="btn-primary nav-btn">Book Now</a></li>
+            </ul>
+            <!-- Mobile Hamburger Menu -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Carousel -->
+    <header class="hero fade-in">
+        <!-- Background Carousel Images (Updated to .webp format) -->
+        <div class="hero-carousel">
+            <!-- Ensure your files are named exactly like this in your folder -->
+            <div class="carousel-slide active" style="background-image: url('bg1.png');"></div>
+            <div class="carousel-slide" style="background-image: url('bg2.png');"></div>
+            <div class="carousel-slide" style="background-image: url('bg3.png.webp');"></div>
+            <div class="carousel-slide" style="background-image: url('bg4.png.webp');"></div>
+        </div>
+        
+        <!-- Overlay and Content -->
+        <div class="hero-overlay">
+            <div class="hero-content">
+                <p class="eyebrow">Therapeutic bodywork · Personalized care</p>
+                <h1>Restore & Revive Massage</h1>
+                <p class="hero-lead">A considered massage experience designed to release tension, restore balance, and bring you back to yourself.</p>
+                <a href="booking.html" class="btn-primary hero-btn">Book Your Session</a>
+                <div class="hero-trust" aria-label="Service highlights">
+                    <span>Tailored treatments</span>
+                    <span>Thoughtful care</span>
+                    <span>Deep relaxation</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- NEW: Services Section -->
+    <section id="services" class="services-section fade-in">
+        <div class="container text-center">
+            <p class="eyebrow">The treatment menu</p>
+            <h2>Our Signature Massages</h2>
+            <p class="tagline">Discover the perfect treatment tailored for your body and mind.</p>
+            
+            <div class="services-grid">
+                <!-- Service 1 -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">01</div>
+                    <h3>Swedish Massage</h3>
+                    <p>A gentle, flowing full-body massage perfect for melting away daily stress, easing tension, and improving circulation.</p>
+                </div>
+                <!-- Service 2 -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">02</div>
+                    <h3>Deep Tissue Massage</h3>
+                    <p>Targets the deeper layers of muscle and connective tissue to relieve chronic pain, stiffness, and structural imbalances.</p>
+                </div>
+                <!-- Service 3 -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">03</div>
+                    <h3>Sports Massage</h3>
+                    <p>Designed for active individuals to prevent injuries, improve flexibility, and dramatically enhance physical performance.</p>
+                </div>
+                <!-- Service 4 -->
+                <div class="service-card fade-in">
+                    <div class="service-icon">04</div>
+                    <h3>Aromatherapy</h3>
+                    <p>Combines gentle, soothing touch with premium essential oils to promote profound emotional well-being and deep relaxation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Quick Info Section -->
+    <section id="contact" class="contact-section fade-in">
+        <div class="container">
+            <div class="contact-grid">
+                
+                <!-- Contact Form -->
+                <div class="contact-form-card">
+                    <p class="eyebrow">Start a conversation</p>
+                    <h2>Get in Touch</h2>
+                    <p>Have a question? Send us a message.</p>
+                    <form id="homeContactForm">
+                        <div class="form-group">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" id="fullName" placeholder="Full Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" placeholder="(xxx) xxx-xxxx" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" placeholder="jane@example.com" required>
+                        </div>
+                        <button type="submit" class="btn-primary full-width">Send Message</button>
+                        <p id="contactSuccessMessage" class="success-message hidden">Thank you! Your message has been sent.</p>
+                    </form>
+                </div>
+
+                <!-- Quick Contact Info -->
+                <div class="quick-contact-card">
+                    <p class="eyebrow">Personal assistance</p>
+                    <h2>Quick Contact</h2>
+                    <p>Reach out to us directly through the following channels:</p>
+                    <div class="contact-methods">
+                        <div class="contact-item">
+                            <span class="icon">💬</span>
+                            <div>
+                                <strong>WhatsApp</strong>
+                                <br>
+                                <a href="https://wa.me/14356097120" target="_blank" class="contact-link">Chat with us</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">📞</span>
+                            <div>
+                                <strong>Phone</strong>
+                                <br>
+                                <a href="tel:4356097120" class="contact-link">(435) 609-7120</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">✉️</span>
+                            <div>
+                                <strong>Email</strong>
+                                <br>
+                                <a href="mailto:Relaxnrevivemassage@gmail.com" class="contact-link">Relaxnrevivemassage@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Restore & Revive Massage. All rights reserved.</p>
+    </footer>
+
+    <!-- NEW: Floating WhatsApp Button -->
+    <a href="https://wa.me/14356097120" class="floating-whatsapp" target="_blank" rel="noopener noreferrer">
+        <svg viewBox="0 0 32 32" fill="white">
+            <path d="M16.05 2A13.9 13.9 0 0 0 2.1 15.95c0 2.45.63 4.84 1.83 6.95L2 29.86l7.14-1.87a13.82 13.82 0 0 0 6.91 1.85h.01A13.9 13.9 0 0 0 29.96 16 13.85 13.85 0 0 0 16.05 2zm0 23.36a11.5 11.5 0 0 1-5.88-1.6l-.42-.25-4.37 1.15 1.16-4.26-.28-.44A11.5 11.5 0 0 1 4.45 16a11.55 11.55 0 0 1 11.6-11.55A11.45 11.45 0 0 1 27.6 16a11.5 11.5 0 0 1-11.55 9.36zm6.33-8.64c-.35-.17-2.06-1.02-2.38-1.13-.32-.12-.55-.18-.78.17-.23.35-.9 1.13-1.1 1.36-.2.23-.4.26-.75.09-.34-.17-1.47-.54-2.8-1.73-1.03-.92-1.73-2.06-1.93-2.4-.2-.35-.02-.54.15-.71.16-.16.35-.4.53-.61.17-.2.23-.34.34-.58.12-.23.06-.43-.03-.6-.09-.17-.78-1.88-1.07-2.58-.28-.68-.57-.59-.78-.6-.2-.01-.43-.01-.66-.01s-.6.09-.92.43c-.32.35-1.22 1.2-1.22 2.92s1.25 3.39 1.42 3.62c.17.23 2.47 3.77 5.98 5.29 2.44 1.05 3.34 1.13 4.44.95 1.16-.19 3.55-1.45 4.05-2.85.5-1.4.5-2.6.35-2.85-.15-.26-.55-.4-.9-.58z"/>
+        </svg>
+    </a>
+
+    <script type="module" src="/script.js"></script>
+</body>
+</html>

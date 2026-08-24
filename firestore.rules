@@ -1,0 +1,29 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /contacts/{contactId} {
+      allow create: if request.resource.data.status == 'new'
+        && request.resource.data.fullName is string
+        && request.resource.data.fullName.size() > 0
+        && request.resource.data.fullName.size() <= 120
+        && request.resource.data.phone is string
+        && request.resource.data.phone.size() <= 40
+        && request.resource.data.email is string
+        && request.resource.data.email.size() <= 254;
+      allow read, update, delete: if request.auth != null;
+    }
+
+    match /bookings/{bookingId} {
+      allow create: if request.resource.data.status == 'new'
+        && request.resource.data['Full Name'] is string
+        && request.resource.data['Full Name'].size() > 0
+        && request.resource.data['Full Name'].size() <= 120
+        && request.resource.data['Email Address'] is string
+        && request.resource.data['Email Address'].size() <= 254
+        && request.resource.data['Phone Number'] is string
+        && request.resource.data['Phone Number'].size() <= 40;
+      allow read, update, delete: if request.auth != null;
+    }
+  }
+}

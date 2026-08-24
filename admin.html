@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Restore & Revive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/admin.css">
+</head>
+<body>
+  <main>
+    <section id="loginView" class="login-shell">
+      <form id="loginForm" class="login-card">
+        <img src="/logo.png" alt="Restore & Revive" class="admin-logo">
+        <p class="eyebrow">Private access</p>
+        <h1>Admin sign in</h1>
+        <label>Email<input id="adminEmail" type="email" autocomplete="username" required></label>
+        <label>Password<input id="adminPassword" type="password" autocomplete="current-password" required></label>
+        <p id="loginError" class="error" role="alert"></p>
+        <button type="submit">Sign in</button>
+        <a href="/index.html" class="back-link">Return to website</a>
+      </form>
+    </section>
+
+    <section id="dashboardView" class="dashboard hidden">
+      <header class="dashboard-header">
+        <div>
+          <p class="eyebrow">Restore & Revive</p>
+          <h1>Customer dashboard</h1>
+          <p id="adminIdentity" class="muted"></p>
+        </div>
+        <button id="logoutButton" class="secondary" type="button">Sign out</button>
+      </header>
+
+      <div class="stats">
+        <article><span id="bookingCount">0</span><p>Total bookings</p></article>
+        <article><span id="contactCount">0</span><p>Contact requests</p></article>
+        <article><span id="newCount">0</span><p>New items</p></article>
+      </div>
+
+      <nav class="tabs" aria-label="Dashboard sections">
+        <button class="tab active" data-panel="bookingsPanel" type="button">Bookings</button>
+        <button class="tab" data-panel="contactsPanel" type="button">Contacts</button>
+      </nav>
+
+      <p id="dashboardError" class="error" role="alert"></p>
+      <section id="bookingsPanel" class="panel"><div id="bookingsList" class="records"><p class="empty">Loading bookings…</p></div></section>
+      <section id="contactsPanel" class="panel hidden"><div id="contactsList" class="records"><p class="empty">Loading contacts…</p></div></section>
+    </section>
+  </main>
+  <script type="module" src="/admin.js"></script>
+</body>
+</html>
