@@ -744,6 +744,22 @@ h1, h2, h3, h4 { letter-spacing: -.025em; }
 }
 .nav-links a:not(.nav-btn):hover::after { transform: scaleX(1); }
 
+.nav-links .admin-nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--clr-soft-green);
+}
+.admin-nav-link svg {
+    width: 19px;
+    height: 19px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
 .btn-primary {
     padding: 14px 30px;
     border: 1px solid var(--clr-soft-green);
@@ -930,6 +946,7 @@ footer { padding: 42px; color: rgba(255,255,255,.62); background: #1d3027; font-
     .navbar { padding: 9px 0; }
     .logo span { display: block; font-size: 1.05rem; }
     .nav-links { gap: 22px; padding: 28px 0; border-bottom: 1px solid var(--clr-line); background: rgba(251,248,242,.98); }
+    .nav-links .admin-nav-link { justify-content: center; }
     .hero { height: 720px; min-height: 0; }
     .hero-overlay { align-items: flex-end; padding: 70px 24px; background: linear-gradient(0deg, rgba(251,248,242,.98) 4%, rgba(251,248,242,.85) 58%, rgba(36,61,49,.12) 100%); }
     .hero-content { width: 100%; }
